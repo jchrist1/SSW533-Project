@@ -5,8 +5,10 @@ The goal of this project is to analyze a couple of existing open source projects
 ## Getting Started
 
 The two tools that are currently being used in the script are:
+'''
 lizard - https://github.com/terryyin/lizard
 pmccabe - https://people.debian.org/~bame/pmccabe/overview.html
+'''
 
 ### Prerequisites
 
