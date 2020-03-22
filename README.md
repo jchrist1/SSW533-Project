@@ -1,64 +1,40 @@
 # SSW 533 Term Project
 
-One Paragraph of project description goes here
+The goal of this project is to analyze a couple of existing open source projects to understand how the project complexity has evolved over time. 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+The two tools that are currently being used in the script are:
+
+* lizard - https://github.com/terryyin/lizard
+* pmccabe - https://people.debian.org/~bame/pmccabe/overview.html
+
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+The scripts have been developed to run in a bash envronment. If using a Windows machine suggest running in a virtual machine.
 
-```
-Give examples
-```
+
+* git
+* pmccabe
+* lizzard
+* current python 3 distribution - https://python.org
+* numpy python library - https://numpy.org
+* matplotlib python library - https://matplotlib.org
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+There is no install required for these scripts if the prerequisites are met. Please follow the links above for the analysis tools. It is suggested to obtain the python distribution and packages through the os package manager (apt-get - Ubuntu)
 
-Say what the step will be
+## Running the scripts 
 
-```
-Give the example
-```
+./generate_data.sh repo_source/example_repo.git
 
-And repeat
+### Break down of what is generated
 
-```
-until finished
-```
+For each commit in the repo mainline history text files are created with the results of the pmccabe tools and lizard tools. A text file is also created to display the number of files that changed between the commits. 
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-Describe build environment 
+[ ] TODO - Update what post processing does. 
 
 ## Contributing
  
@@ -70,6 +46,5 @@ Matt Fuhrmann
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
