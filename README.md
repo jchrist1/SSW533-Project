@@ -5,23 +5,22 @@ The goal of this project is to analyze a couple of existing open source projects
 ## Getting Started
 
 The two tools that are currently being used in the script are:
-'''
-lizard - https://github.com/terryyin/lizard
-pmccabe - https://people.debian.org/~bame/pmccabe/overview.html
-'''
+
+* lizard - https://github.com/terryyin/lizard
+* pmccabe - https://people.debian.org/~bame/pmccabe/overview.html
+
 
 ### Prerequisites
 
 The scripts have been developed to run in a bash envronment. If using a Windows machine suggest running in a virtual machine.
 
-```
-git
-pmccabe
-lizzard
-current python 3 distribution - https://python.org
-numpy python library - https://numpy.org
-matplotlib python library - https://matplotlib.org
-```
+
+* git
+* pmccabe
+* lizzard
+* current python 3 distribution - https://python.org
+* numpy python library - https://numpy.org
+* matplotlib python library - https://matplotlib.org
 
 ### Installing
 
@@ -35,7 +34,7 @@ There is no install required for these scripts if the prerequisites are met. Ple
 
 For each commit in the repo mainline history text files are created with the results of the pmccabe tools and lizard tools. A text file is also created to display the number of files that changed between the commits. 
 
-TODO - Update what post processing does. 
+[ ] TODO - Update what post processing does. 
 
 ## Contributing
  
