@@ -19,8 +19,8 @@ def process_pmccabe_file(fileName):
 	mc_array = np.array([int(x['MC']) for x in data])
 	statements_array = np.array([int(x['Statements']) for x in data])
 	LIF_array = np.array([int(x['LIF']) for x in data])
-
-	return [np.mean(mc_array), np.amax(mc_array), np.true_divide(mc_array, LIF_array)[np.argmax(mc_array)]]
+	if mc_array.size > 1:
+		return [np.mean(mc_array), np.amax(mc_array), np.true_divide(mc_array, LIF_array)[np.argmax(mc_array)]]
 
 def plot_pmccabe_file(fileName):
 	data = []
@@ -56,6 +56,32 @@ pmccabeFiles.sort(key=lambda file: int(file.split('_')[1].split('.')[0]))
 
 for file in pmccabeFiles:
 	pmccabeData.append(process_pmccabe_file(file))
+#print (pmccabeData)
+
+#Seperate the returns into seperate arrays
+mean_complexity = []
+max_complexity = []
+max_complexity_lif = []
+
+for record in pmccabeData:
+	if record is not None:
+		mean_complexity.append(record[0])
+		max_complexity.append(record[1])
+		max_complexity_lif.append(record[2])
+
+x_axis = np.linspace(0, len(mean_complexity), len(mean_complexity))
+plt.figure(figsize=(9,3))
+plt.subplot(131)
+plt.plot(x_axis, mean_complexity, 'o')
+plt.ylabel('Average Complexity')
+plt.subplot(132)
+plt.plot(x_axis, max_complexity, 'r^')
+plt.ylabel('Max Complexity')
+plt.subplot(133)
+plt.plot(x_axis, max_complexity_lif, 'bs')
+plt.ylabel('Max Complexity/ lines in file')
+plt.suptitle('Complexity Introduced throughout the Project')
+plt.show()
 
 plot_pmccabe_file(pmccabeFiles[0])
 plot_pmccabe_file(pmccabeFiles[-1])
