@@ -17,7 +17,7 @@ files_changed=$(cat ../commit_output_files/tmp_list.txt | wc -l)
 if [ $files_changed -gt 0 ]; then
 echo "$files_changed" >> ../commit_output_files/changed.txt
 pmccabe $(cat ../commit_output_files/tmp_list.txt) > ../commit_output_files/pmccabe_$commit_couter.txt
-lizard -t 6 $(cat ../commit_output_files/tmp_list.txt) > ../commit_output_files/lizard_$commit_couter.txt
+lizard -t 6 -l cpp --csv $(cat ../commit_output_files/tmp_list.txt) > ../commit_output_files/lizard_$commit_couter.txt
 commit_couter=$((commit_couter+1))
 fi
 
