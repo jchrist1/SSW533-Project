@@ -10,10 +10,14 @@ def process_lizard_file(fileName):
 		for line in lizardFile:
 			data.append(dict(zip(['NLOC','CCN','TOKEN','PARAM', 'Length'],line.split(',')[:5])))
 		
-		mc_array = np.array([int(x['CCN']) for x in data])
-		LIF_array = np.array([int(x['Length']) for x in data])
-		if mc_array.size > 1:
-			return [np.mean(mc_array), np.amax(mc_array), np.true_divide(mc_array, LIF_array)[np.argmax(mc_array)]]
+		try:
+			mc_array = np.array([int(x['CCN']) for x in data])
+			LIF_array = np.array([int(x['Length']) for x in data])
+			if mc_array.size > 1:
+				return [np.mean(mc_array), np.amax(mc_array), np.true_divide(mc_array, LIF_array)[np.argmax(mc_array)]]
+		except:
+			print ('Failed to Parse Dictionary generated from ' + fileName)
+			print (len(data))
 
 # Helper function to parse the pmccabe file
 def process_pmccabe_file(fileName):
@@ -22,11 +26,14 @@ def process_pmccabe_file(fileName):
 		for line in pmccabeFile:
 			data.append(dict(zip(['Mod_MC', 'MC', 'Statements', 'FOF', 'LIF', 'FN', 'FUNCT'], line.split())))
 
-	#print (data)
-	mc_array = np.array([int(x['MC']) for x in data])
-	LIF_array = np.array([int(x['LIF']) for x in data])
-	if mc_array.size > 1:
-		return [np.mean(mc_array), np.amax(mc_array), np.true_divide(mc_array, LIF_array)[np.argmax(mc_array)]]
+	try: 
+		mc_array = np.array([int(x['MC']) for x in data])
+		LIF_array = np.array([int(x['LIF']) for x in data])
+		if mc_array.size > 1:
+			return [np.mean(mc_array), np.amax(mc_array), np.true_divide(mc_array, LIF_array)[np.argmax(mc_array)]]
+	except:
+			print ('Failed to Parse Dictionary generated from ' + fileName)
+			print (len(data))
 
 def plot_pmccabe_file(fileName):
 	data = []
